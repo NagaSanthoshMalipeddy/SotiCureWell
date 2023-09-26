@@ -1,0 +1,47 @@
+<div style="padding-top: 55px;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-4 my-5" style="border-radius: 15px;background-color: skyblue;">
+        <form #form="ngForm" (submit)="onSubmit(form)">
+            <div class="mb-3">
+              <label for="surgId" class="form-label  py-3">Surgery Id</label>
+              <input type="number" [value]="serv.surgData.surgeryId" class="form-control" id="surgId" required readonly>
+              </div>
+              <div class="mb-3">
+                <label for="docId" class="form-label ">Doctor Id</label>
+                <input type="number" [value]="serv.surgData.doctorId" class="form-control" id="docId" required  readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="surgDate" class="form-label ">Surgery Date</label>
+                    <input type="text" [value]="surgeryDate" class="form-control" id="surgDate" required  readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="surgSt" class="form-label ">Surgery Start Time</label>
+                        <input type="number" #st="ngModel" name="#st" [(ngModel)]="serv.surgData.startTime" class="form-control" id="surgSt" required>
+                        <div *ngIf="st.touched && st.invalid" style="color: red;">Please enter valid Start Time</div>
+                        <div *ngIf="serv.surgData.startTime>24" style="color: red;">StartTime must be less than or equal to 24</div>
+                        <div *ngIf="serv.surgData.startTime<0" style="color: red;">StartTime must be greater than or equal to 0</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="surgEt" class="form-label ">Surgery End Time</label>
+                            <input type="number" #et="ngModel" name="#et" [(ngModel)]="serv.surgData.endTime" class="form-control" id="surgEt" required>
+                            <div *ngIf="et.touched && et.invalid" style="color: red;">Please enter valid End Time</div>
+                            <div *ngIf="serv.surgData.endTime>24" style="color: red;">EndTime must be less than or equal to 24</div>
+                            <div *ngIf="serv.surgData.endTime<0" style="color: red;">EndTime must be greater than or equal to 0</div>
+                        </div>
+                            <div class="mb-3">
+                                <label for="surgCat" class="form-label ">Surgery Category</label>
+                                <input type="text" [value]="serv.surgData.surgeryCategory" class="form-control" id="surgCat" required readonly>
+                                </div>
+                                <div *ngIf="serv.surgData.startTime >= serv.surgData.endTime" style="color: red;">StartTime must be less than EndTime</div>
+            
+                                <button type="submit" class="btn btn-primary d-block mx-auto my-3" [disabled]="!(st.valid && et.valid && serv.surgData.startTime < serv.surgData.endTime && serv.surgData.startTime>=0 && serv.surgData.startTime<=24 && serv.surgData.endTime>=0 && serv.surgData.endTime<=24)">Submit</button>
+                            </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+

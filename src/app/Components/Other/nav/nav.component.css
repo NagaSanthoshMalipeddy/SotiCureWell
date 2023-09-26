@@ -1,0 +1,18 @@
+ /* Add hover styles for the links */
+ .navbar-nav .nav-link {
+    transition: box-shadow 0.3s ease-in-out;
+  }
+
+  .navbar-nav .nav-link:hover {
+    color: white !important;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2); /* Add elevation */
+  }
+
+  .xyz{
+    transition: box-shadow 0.3s ease-in-out;
+  }
+
+  .xyz:hover {
+    color: white !important;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2); /* Add elevation */
+  }

@@ -1,0 +1,17 @@
+<div style="padding-top: 55px;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-4 my-5" style="border-radius: 15px;background-color: skyblue;">
+        <form #form="ngForm" (submit)="onSubmit(form)">
+          <div class="mb-3">
+            <label for="doctorname" class="form-label py-3">DoctorName</label>
+            <input type="text" name="#HolderName" #HolderName="ngModel" [(ngModel)]="docDetail.doctorName" class="form-control" id="doctorname" required>
+            <div *ngIf="HolderName.touched && HolderName.invalid" style="color: red;">Please enter DoctorName</div>
+          </div>
+          <button type="submit" class="btn btn-primary d-block mx-auto my-3" [disabled]="HolderName.invalid">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div></div>

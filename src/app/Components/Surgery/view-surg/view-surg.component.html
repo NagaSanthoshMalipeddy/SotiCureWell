@@ -1,0 +1,115 @@
+<div style="padding-top: 55px;">
+<div class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="table-responsive">
+          <table class="table table-hover text-center"  style="border-radius: 10px;border-color: black;">
+            <thead style="background-color: rgb(204, 235, 247);">
+              <tr>
+                <th class="">SurgeryId</th>
+                <th class="">DoctorId</th>
+                <th class="">SurgeryDate</th>
+                <th class="">StartTime</th>
+                <th class="">EndTime</th>
+                <th class="">SurgeryCategory</th>
+                <th class="">Action</th>
+              </tr>
+            </thead>
+            <tbody style="background-color:rgb(214, 214, 214)">
+              <tr *ngFor="let item of serv.surgList">
+                <td class=""><span #sid class="" style="color: black;">{{ item.surgeryId }}</span></td>
+                <td class="" #did>{{ item.doctorId }}</td>
+                <td class="" #sd>{{ item.surgeryDate }}</td>
+                <td class="" #st>{{ item.startTime }}</td>
+                <td class="" #et>{{ item.endTime }}</td>
+                <td class="" #sc>{{ item.surgeryCategory}}</td>
+                <!-- <td><a routerLink="updateSurg"><button class="btn bg-white" (click)="setSurgeryDetails(sid,did,sd,st,et,sc)">Edit Surgery Time</button></a></td> -->
+              <!-- Button trigger modal -->
+              <td><button type="button" class="btn bg-white" (click)="setSurgeryDetails(sid,did,sd,st,et,sc)" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Edit Surgery Time
+              </button></td>
+              
+
+<!-- Modal -->
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div></div>
+
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form #form="ngForm" (submit)="onSubmit(form)">
+            <div class="mb-3">
+              <label for="surgId" class="form-label  py-3">Surgery Id</label>
+              <input type="number" [value]="serv.surgData.surgeryId" class="form-control" id="surgId" required readonly>
+              </div>
+              <div class="mb-3">
+                <label for="docId" class="form-label ">Doctor Id</label>
+                <input type="number" [value]="serv.surgData.doctorId" class="form-control" id="docId" required  readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="surgDate" class="form-label ">Surgery Date</label>
+                    <input type="text" [value]="surgeryDate" class="form-control" id="surgDate" required  readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="surgSt" class="form-label ">Surgery Start Time</label>
+                        <input type="number" #st="ngModel" name="#st" [(ngModel)]="serv.surgData.startTime" class="form-control" id="surgSt" required>
+                        <div *ngIf="st.touched && st.invalid" style="color: red;">Please enter valid Start Time</div>
+                        <div *ngIf="serv.surgData.startTime>24" style="color: red;">StartTime must be less than or equal to 24</div>
+                        <div *ngIf="serv.surgData.startTime<0" style="color: red;">StartTime must be greater than or equal to 0</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="surgEt" class="form-label ">Surgery End Time</label>
+                            <input type="number" #et="ngModel" name="#et" [(ngModel)]="serv.surgData.endTime" class="form-control" id="surgEt" required>
+                            <div *ngIf="et.touched && et.invalid" style="color: red;">Please enter valid End Time</div>
+                            <div *ngIf="serv.surgData.endTime>24" style="color: red;">EndTime must be less than or equal to 24</div>
+                            <div *ngIf="serv.surgData.endTime<0" style="color: red;">EndTime must be greater than or equal to 0</div>
+                        </div>
+                            <div class="mb-3">
+                                <label for="surgCat" class="form-label ">Surgery Category</label>
+                                <input type="text" [value]="serv.surgData.surgeryCategory" class="form-control" id="surgCat" required readonly>
+                                </div>
+                                <div *ngIf="serv.surgData.startTime >= serv.surgData.endTime" style="color: red;">StartTime must be less than EndTime</div>
+            
+                                <button type="submit" class="btn btn-primary d-block mx-auto my-3" data-bs-dismiss="modal" [disabled]="!(st.valid && et.valid && serv.surgData.startTime < serv.surgData.endTime && serv.surgData.startTime>=0 && serv.surgData.startTime<=24 && serv.surgData.endTime>=0 && serv.surgData.endTime<=24)">Submit</button>
+                            </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+<!-- 
+  <div style="padding-top: 55px;">
+  <div class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="row">
+          <div *ngFor="let item of serv.surgList" class="col-md-4 mb-4">
+            <div class="card" style="border-radius: 10px;background-color: skyblue;"
+                 (mouseenter)="hoveredCard = item" (mouseleave)="hoveredCard = null"
+                 [class.hovered]="hoveredCard === item">
+              <div class="card-body text-center">
+                <h5 class="card-title">Surgery ID: <span #sid class="" style="color: black;">{{ item.surgeryId}}</span></h5>
+                <p class="card-text">Doctor Id: <span #did class="" style="color: black;">{{ item.doctorId }}</span></p>
+                <p class="card-text">Surgery Date: <span #sd class="" style="color: black;">{{ item.surgeryDate }}</span></p>
+                <p class="card-text">Start Time: <span #st class="" style="color: black;">{{ item.startTime }}</span></p>
+                <p class="card-text">End Time: <span #et class="" style="color: black;">{{ item.endTime }}</span></p>
+                <p class="card-text">Surgery Category: <span #sc class="" style="color: black;">{{ item.surgeryCategory }}</span></p>
+                <a routerLink="updateSurg"><button class="btn bg-white" (click)="setSurgeryDetails(sid,did,sd,st,et,sc)">Edit Surgery Time</button></a>
+                 </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div></div> -->

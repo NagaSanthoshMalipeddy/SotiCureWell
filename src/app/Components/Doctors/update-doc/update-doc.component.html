@@ -1,0 +1,20 @@
+<div style="padding-top: 55px;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-4 my-5" style="border-radius: 15px;background-color: skyblue;">
+        <form #form="ngForm" (submit)="onSubmit(form)">
+          <div class="mb-3">
+            <label for="doctorid" class="form-label  py-2">Doctor Id</label>
+            <input type="number" [value]="docDetail.doctorId" class="form-control" id="decDetail.doctoriId" required>
+            </div>
+          <div class="mb-3">
+            <label for="doctorname" class="form-label ">DoctorName</label>
+            <input type="text" name="#HolderName" #HolderName="ngModel" [(ngModel)]="docDetail.doctorName" class="form-control" id="doctorname" required>
+          </div>
+          <button type="submit" class="btn btn-primary mx-auto d-block my-3">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div></div>

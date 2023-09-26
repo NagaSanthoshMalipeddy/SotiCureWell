@@ -1,0 +1,20 @@
+<div class="container" style="background-color: bisque;border-radius: 15px;">
+  <div class="display-3 text-center">Login Page</div>
+</div>
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <button class="btn btn-primary d-block mx-auto" *ngIf="!isUserAuthenticated()"><a class="d-block mx-auto text-white" style="text-decoration: none;" routerLink="/login" *ngIf="!isUserAuthenticated()">LOGIN</a></button>
+      <button class="btn btn-primary d-block mx-auto" *ngIf="isUserAuthenticated()"><a class="d-block mx-auto text-white" style="text-decoration: none;"  *ngIf="isUserAuthenticated()" (click)="logOut()">LOGOUT</a></button>
+    </div>
+    <div class="col-md-4"></div>
+   </div>
+   <div class="row">
+    <div *ngIf="isUserAuthenticated()" style="color:blue;">
+      <h2 class="text-center">
+        YOU ARE LOGGED IN
+      </h2>
+    </div>
+   </div>
+</div>

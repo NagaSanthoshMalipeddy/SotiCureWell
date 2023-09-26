@@ -1,0 +1,54 @@
+<div style="padding-top: 55px;">
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="row">
+        <div *ngFor="let item of serv.docList" class="col-md-4 mb-4">
+          <div class="card" style="border-radius: 10px;background-color: skyblue;"
+               (mouseenter)="hoveredCard = item" (mouseleave)="hoveredCard = null"
+               [class.hovered]="hoveredCard === item">
+            <div class="card-body text-center">
+              <h5 class="card-title">Doctor ID: <span #id class="text-white" style="color: black;">{{ item.doctorId }}</span></h5>
+              <p class="card-text">Doctor Name: <span class="text-white" style="color: black;">{{ item.doctorName }}</span></p>
+              <a routerLink="/updateDoc" style="text-decoration: none;" class="text-dark"><button class="btn bg-white" (click)="upd(id)">Edit doctor details</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+
+<!-- <div class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="table-responsive">
+          <table class="table table-hover text-center bg-dark"  style="border-radius: 10px;">
+            <thead>
+              <tr>
+                <th class="text-white">DoctorId</th>
+                <th class="text-white">DoctorName</th>
+                <th class="text-white">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of serv.docList">
+                <td class="text-white"><span #id class="text-white" style="color: black;">{{ item.doctorId }}</span></td>
+                <td class="text-white">{{ item.doctorName }}</td>
+                <td><a routerLink="/updateDoc" style="text-decoration: none;" class="text-dark"><button class="btn bg-white" (click)="upd(id)">Edit doctor details</button></a></td>
+  
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  
