@@ -1,0 +1,91 @@
+create database CureWellDB
+
+use CureWellDB
+
+
+create table Doctor (
+    DoctorID int primary key identity(1001, 1),
+    DoctorName varchar(25) not null
+)
+
+
+create table Specialization (
+    SpecializationCode char(3) primary key,
+    SpecializationName varchar(20) not null
+)
+
+
+create table DoctorSpecialization (
+    DoctorID int references Doctor(DoctorID),
+    SpecializationCode char(3) references Specialization(SpecializationCode),
+    SpecializationDate date not null,
+    primary key (DoctorID, SpecializationCode)
+)
+
+
+create table Surgery (
+    SurgeryID int primary key identity(5000, 1),
+    DoctorID int references Doctor(DoctorID),
+    SurgeryDate date not null,
+    StartTime decimal(4, 2) not null,
+    EndTime decimal(4, 2) not null,
+    SurgeryCategory char(3) references Specialization(SpecializationCode)
+)
+
+
+insert into Doctor (DoctorName) values
+('Dr. Albert'),
+('Dr. Olivia'),
+('Dr. Susan')
+
+
+insert into Specialization (SpecializationCode, SpecializationName) values
+('GYN', 'Gynecologist'),
+('CAR', 'Cardiologist'),
+('ANE', 'Anesthesiologist')
+
+
+insert into DoctorSpecialization (DoctorID, SpecializationCode, SpecializationDate) values
+(1001, 'ANE', '2010-01-01'),
+(1002, 'CAR', '2010-01-01'),
+(1003, 'CAR', '2010-01-01')
+
+
+insert into Surgery (DoctorID, SurgeryDate, StartTime, EndTime, SurgeryCategory) values
+(1001, '2011-01-01', 09.00, 14.00, 'ANE'),
+(1002, '2015-01-01', 10.00, 16.00, 'CAR'),
+(1003, '2019-01-01', 14.00, 16.15, 'GYN')
+
+
+select * from Doctor
+select * from Specialization
+select * from DoctorSpecialization
+select * from Surgery
+
+
+select * from Surgery
+
+-- Insert the first record
+INSERT INTO Surgery (DoctorID, SurgeryDate, StartTime, EndTime, SurgeryCategory)
+VALUES (1001, '2023-09-24', 08.00, 12.00, 'ANE');
+
+-- Insert the second record
+INSERT INTO Surgery (DoctorID, SurgeryDate, StartTime, EndTime, SurgeryCategory)
+VALUES (1002, '2023-09-25', 09.00, 13.00, 'CAR');
+
+-- Insert the third record
+INSERT INTO Surgery (DoctorID, SurgeryDate, StartTime, EndTime, SurgeryCategory)
+VALUES (1003, '2023-09-26', 10.00, 14.00, 'GYN');
+
+-- Continue inserting the remaining records in a similar manner
+
+
+
+create table Admin
+(AdminName nvarchar(100),
+AdminPwd nvarchar(100),
+constraint AdminPk primary key(AdminName,AdminPwd));
+
+
+
+
