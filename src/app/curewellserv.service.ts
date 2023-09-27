@@ -65,8 +65,8 @@ export class CurewellservService {
     localStorage.removeItem("username");
   }
 
-navvisible:boolean;
-username:string;
+navvisible:boolean=localStorage.getItem("username")!=null;
+username:string=localStorage.getItem("username");
 
 
   upddocid:number=0;

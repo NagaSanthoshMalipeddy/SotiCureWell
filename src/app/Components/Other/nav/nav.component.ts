@@ -16,7 +16,7 @@ ngOnInit(): void {
 }
 
 loadUserData() {
-  this.username = localStorage.getItem("username");
+  this.serv.username = localStorage.getItem("username");
   this.serv.navvisible = localStorage.getItem("username") != null;
 }
 
