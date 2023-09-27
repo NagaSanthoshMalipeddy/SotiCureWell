@@ -1,0 +1,26 @@
+<div style="padding-top: 55px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4 my-5" style="border-radius: 15px;background-color: skyblue;">
+          <form #form="ngForm" (submit)="onSubmit(form)">
+            <div class="mb-3">
+              <label for="doctorId" class="form-label py-3">DoctorId</label>
+              <input type="text" name="#DoctorId" #DoctorId="ngModel" [(ngModel)]="spec.doctorId" class="form-control" id="doctorId" required readonly>
+              <div *ngIf="DoctorId.touched && DoctorId.invalid" style="color: red;">Please enter DoctorId</div>
+            </div>
+            <div class="mb-3">
+                <label for="surgCode" class="form-label py-3">Surgery Code</label>
+                <select name="#SurgeryCode" #SurgeryCode="ngModel" [(ngModel)]="spec.specializationCode" class="form-control" id="surgCode" required>
+                    <option *ngFor="let k of specCodes" [value]="k">
+                        {{k}}
+                    </option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary d-block mx-auto my-3" [disabled]="DoctorId.invalid">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div></div>
+  

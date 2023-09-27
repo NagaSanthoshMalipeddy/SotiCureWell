@@ -1,0 +1,28 @@
+<div style="padding-top: 55px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4 my-5" style="border-radius: 15px;background-color: skyblue;">
+          <form #form="ngForm" (submit)="onSubmit(form)">
+            <div class="mb-3">
+                <label for="speccode" class="form-label py-3">Specialization Code</label>
+                <input type="text" name="#SpecializationCode" #SpecializationCode="ngModel" [(ngModel)]="specDetail.specializationCode" class="form-control" id="speccode" required>
+                <div *ngIf="SpecializationCode.touched && SpecializationCode.invalid" style="color: red;">Please enter SpecializationCode</div>
+              </div>
+              <div *ngIf="checkSpecializationCodeExists(specDetail.specializationCode)" style="color: red;">
+                Specialization Code already exists
+              </div>
+            <div class="mb-3">
+              <label for="specname" class="form-label py-3">Specialization Name</label>
+              <input type="text" name="#SpecializationName" #SpecializationName="ngModel" [(ngModel)]="specDetail.specializationName" class="form-control" id="specname" required>
+              <div *ngIf="SpecializationName.touched && SpecializationName.invalid" style="color: red;">Please enter SpecializationName</div>
+            </div>
+            <button type="submit" class="btn btn-primary d-block mx-auto my-3" [disabled]="SpecializationName.invalid || SpecializationCode.invalid || checkSpecializationCodeExists(specDetail.specializationCode)">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div></div>
+  
+
+    

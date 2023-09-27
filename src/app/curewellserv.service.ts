@@ -12,9 +12,9 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class CurewellservService {
 
  
-  apiurl1="http://localhost:5001/api/Doctors";
-  apiurl2="http://localhost:5001/api/Specializations";
-  apiurl3="http://localhost:5001/api/DoctorSpecializations";
+  apiurl1="http://localhost:5001/api/Doctors"; //GET POST PUT
+  apiurl2="http://localhost:5001/api/Specializations"; //GET 
+  apiurl3="http://localhost:5001/api/DoctorSpecializations";//Get("SpecializationCode")
   apiurl4="http://localhost:5001/api/Surgeries";
   addDoc="http://localhost:5001/api/Doctors";
 
@@ -51,6 +51,21 @@ export class CurewellservService {
     return this.obj.post(this.addDoc,docDetail);
   }
 
+  removeDoctor(id){
+    return this.obj.delete(this.apiurl1+'/'+id);
+  }
+
+  addSurgery(surgDetail:Surgery){
+    return this.obj.post(this.apiurl4,surgDetail);
+  }
+
+  addSpecialization(specDetail:Specialization){
+    return this.obj.post(this.apiurl2,specDetail);
+  }
+
+  addDoctorSpecialization(docSpecDetail:DoctorSpecialization){
+    return this.obj.post(this.apiurl3,docSpecDetail);
+  }
 
   isUserAuthenticated = (): boolean => {
     const token = localStorage.getItem("jwt");

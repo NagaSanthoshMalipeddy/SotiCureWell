@@ -1,5 +1,5 @@
 export class DoctorSpecialization {
-    DoctorId:number;
-    SpecializationCode:string;
-    SpecializationDate:Date;
+    doctorId:number;
+    specializationCode:string;
+    specializationDate:Date;
 }

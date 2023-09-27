@@ -8,7 +8,6 @@ import { JwtModule } from "@auth0/angular-jwt";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './Components/Other/login/login.component';
-import { CustomersComponent } from './Components/customers/customers.component';
 import { HomeComponent } from './Components/Other/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavComponent } from './Components/Other/nav/nav.component';
@@ -20,6 +19,9 @@ import { DocWithSpecComponent } from './Components/Speialization/doc-with-spec/d
 import { AddDocComponent } from './Components/Doctors/add-doc/add-doc.component';
 import { ViewSurgComponent } from './Components/Surgery/view-surg/view-surg.component';
 import { UpdateSurgeryComponent } from './Components/Surgery/update-surgery/update-surgery.component';
+import { AddSpecComponent } from './Components/Speialization/add-spec/add-spec.component';
+import { AddSurgComponent } from './Components/Surgery/add-surg/add-surg.component';
+import { AddSpecializationComponent } from './Components/Doctors/add-specialization/add-specialization.component';
 
 
 export function tokenGetter() { 
@@ -30,7 +32,6 @@ export function tokenGetter() {
   declarations: [
     AppComponent,
     LoginComponent,
-    CustomersComponent,
     HomeComponent,
     NavComponent,
     MainComponent,
@@ -40,7 +41,10 @@ export function tokenGetter() {
     DocWithSpecComponent,
     AddDocComponent,
     ViewSurgComponent,
-    UpdateSurgeryComponent
+    UpdateSurgeryComponent,
+    AddSpecComponent,
+    AddSurgComponent,
+    AddSpecializationComponent
   ],
   imports: [
     BrowserModule,

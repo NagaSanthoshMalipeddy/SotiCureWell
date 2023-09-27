@@ -1,7 +1,6 @@
 import { AuthGuard } from './Components/Other/guards/auth.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CustomersComponent } from './Components/customers/customers.component';
 import { HomeComponent } from './Components/Other/home/home.component';
 import { LoginComponent } from './Components/Other/login/login.component';
 import { MainComponent } from './Components/Other/main/main.component';
@@ -12,10 +11,12 @@ import { DocWithSpecComponent } from './Components/Speialization/doc-with-spec/d
 import { AddDocComponent } from './Components/Doctors/add-doc/add-doc.component';
 import { ViewSurgComponent } from './Components/Surgery/view-surg/view-surg.component';
 import { UpdateSurgeryComponent } from './Components/Surgery/update-surgery/update-surgery.component';
+import { AddSpecComponent } from './Components/Speialization/add-spec/add-spec.component';
+import { AddSurgComponent } from './Components/Surgery/add-surg/add-surg.component';
+import { AddSpecializationComponent } from './Components/Doctors/add-specialization/add-specialization.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'customers', component: CustomersComponent, canActivate: [AuthGuard] },
   {path:'main',component:MainComponent,canActivate:[AuthGuard]},
   {path:'viewDoc',component:ViewDocComponent,canActivate:[AuthGuard]},
   {path:'updateDoc',component:UpdateDocComponent,canActivate:[AuthGuard]},
@@ -24,6 +25,9 @@ const routes: Routes = [
   {path:'addDoc',component:AddDocComponent,canActivate:[AuthGuard]},
   {path:'viewSurg',component:ViewSurgComponent,canActivate:[AuthGuard]},
   {path:'viewSurg/updateSurg',component:UpdateSurgeryComponent,canActivate:[AuthGuard]},
+  {path:'viewSpec/addSpec',component:AddSpecComponent,canActivate:[AuthGuard]},
+  {path:'viewSurg/addSurg',component:AddSurgComponent,canActivate:[AuthGuard]},
+  {path:'viewDoc/addSpecialization',component:AddSpecializationComponent,canActivate:[AuthGuard]}
 ];
 
 @NgModule({

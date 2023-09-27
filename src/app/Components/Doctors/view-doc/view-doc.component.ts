@@ -22,6 +22,15 @@ export class ViewDocComponent implements OnInit {
     this.serv.upddocid=id.textContent;
    }
 
+   delete(id){
+    this.serv.removeDoctor(id.textContent).subscribe(res=>{
+     this.serv.getDoctors();
+    },err=>{
+      alert(err);
+      console.log(err);
+    })
+   }
+
    hovered = false; // Initialize as false
 
    // Other component code
