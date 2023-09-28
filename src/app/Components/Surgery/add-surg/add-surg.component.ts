@@ -29,13 +29,44 @@ export class AddSurgComponent implements OnInit {
 
   }
 
+  updateDoctorIds() {
+    this.docIds = this.serv.docSpecList.filter(d => d.specializationCode == this.surgDetail.surgeryCategory).map(d => d.doctorId);
+    console.log(this.docIds);
+  }
+
+  // ngOnInit(): void {
+  //   this.serv.getDoctors();
+  //   this.serv.getAllSpecializations();
+    
+  //   // this.docIds=this.serv.docList.map(doc => doc.doctorId);
+  //   this.surgCats=this.serv.specList.map(spec=>spec.specializationCode);
+  //   this.surgDetail.surgeryCategory=this.surgCats.length!=0?this.surgCats[0]:null;
+  //   this.docIds=this.serv.docSpecList.filter(d=>d.specializationCode==this.surgDetail.surgeryCategory).map(d=>d.doctorId);
+  //   this.updateDoctorIds();
+  // console.log(this.docIds);
+  // console.log(this.surgCats);
+  // }
   ngOnInit(): void {
     this.serv.getDoctors();
     this.serv.getAllSpecializations();
-    this.docIds=this.serv.docList.map(doc => doc.doctorId);
-    this.surgCats=this.serv.specList.map(spec=>spec.specializationCode);
-  console.log(this.docIds);
-  console.log(this.surgCats);
+    this.serv.getAllDocsSpecs();
+    this.surgCats = this.serv.specList.map(spec => spec.specializationCode);
+  
+    // Initialize docIds initially (e.g., based on the default category)
+    // You can replace 'defaultCategory' with the initial value you want.
+    this.surgDetail.surgeryCategory = this.surgCats.length!=0?this.surgCats[0]:null;
+  
+    if (this.serv.docSpecList) {
+      this.updateDoctorIds();
+    } else {
+      // Assuming serv.getDocSpecList() is an asynchronous method, you might need to subscribe to it to ensure it's loaded.
+      this.serv.getAllDocsSpecs();
+      this.updateDoctorIds();
+    }
+  
+    console.log(this.docIds);
+    console.log(this.surgCats);
   }
+  
 
 }

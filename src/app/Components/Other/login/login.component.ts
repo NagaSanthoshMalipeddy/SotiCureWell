@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem("username",this.credentials.username);
           this.serv.navvisible=localStorage.getItem("username")!=null;
           this.serv.username=localStorage.getItem("username");
-          this.router.navigate(["viewDoc"]);
+          this.router.navigate(["main"]);
         },
         error: (err: HttpErrorResponse) =>{ this.invalidLogin = true;}
       })

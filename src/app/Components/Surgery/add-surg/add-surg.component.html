@@ -5,10 +5,17 @@
         </div>
         <div class="col-md-4 my-5" style="border-radius: 15px;background-color: skyblue;">
           <form #form="ngForm" (submit)="onSubmit(form)">
-            
+            <div class="mb-3">
+              <label for="surgCat" class="form-label py-3">Surgery Category</label>
+              <select name="#SurgeryCategory" #SurgeryCategory="ngModel" [(ngModel)]="surgDetail.surgeryCategory" class="form-control" id="surgCat" required (change)="updateDoctorIds()">
+                  <option *ngFor="let k of surgCats" [value]="k">
+                      {{k}}
+                  </option>
+              </select>
+          </div>
             <div class="mb-3">
                 <label for="docId" class="form-label py-3">Doctor Id</label>
-                <select name="#DoctorId" #DoctorId="ngModel" [(ngModel)]="surgDetail.doctorId" class="form-control" id="docId" required>
+                <select name="#DoctorId" #DoctorId="ngModel" [(ngModel)]="surgDetail.doctorId" class="form-control" id="docId" required [disabled]="SurgeryCategory.invalid">
                     <option *ngFor="let item of docIds" [value]="item">
                         {{item}}
                     </option>
@@ -30,14 +37,6 @@
                 <input type="text" name="#SurgeryEndTime" #SurgeryEndTime="ngModel" [(ngModel)]="surgDetail.endTime" class="form-control" id="surgEt" required>
                 <div *ngIf="SurgeryEndTime.touched && SurgeryEndTime.invalid" style="color: red;">Please enter End Time</div>
               </div>
-              <div class="mb-3">
-                <label for="surgCat" class="form-label py-3">Surgery Category</label>
-                <select name="#SurgeryCategory" #SurgeryCategory="ngModel" [(ngModel)]="surgDetail.surgeryCategory" class="form-control" id="surgCat" required>
-                    <option *ngFor="let k of surgCats" [value]="k">
-                        {{k}}
-                    </option>
-                </select>
-            </div>
             <button type="submit" class="btn btn-primary d-block mx-auto my-3" [disabled]=" DoctorId.invalid || SurgeryDate.invalid || SurgeryStartTime.invalid || SurgeryEndTime.invalid || SurgeryCategory.invalid">Submit</button>
           </form>
         </div>

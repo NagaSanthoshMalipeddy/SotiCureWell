@@ -7,7 +7,7 @@
           <form #form="ngForm" (submit)="onSubmit(form)">
             <div class="mb-3">
               <label for="doctorId" class="form-label py-3">DoctorId</label>
-              <input type="text" name="#DoctorId" #DoctorId="ngModel" [(ngModel)]="spec.doctorId" class="form-control" id="doctorId" required readonly>
+              <input type="text" name="#DoctorId" #DoctorId="ngModel" [(ngModel)]="serv.upddocid" class="form-control" id="doctorId" required readonly>
               <div *ngIf="DoctorId.touched && DoctorId.invalid" style="color: red;">Please enter DoctorId</div>
             </div>
             <div class="mb-3">
